@@ -5,8 +5,9 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 import org.junit.Test;
-import static org.junit.Assert.assertThat;
+
 import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.*;
 
 public class GeometryAppTest extends EndToEndTest {
 	@Test(timeout = 200)
