@@ -13,7 +13,16 @@ public class GeometryAppSagasTest extends EndToEndTest {
 		Scanner input = buildInput("2", "1", "10", "2", "2", "12", "14", "1", "0");
 		GeometryApp app = new GeometryApp(input, writer);
 		app.run();
-		assertThat(output(), containsString("Square: Area = 100, Perimeter = 40"));
-		assertThat(output(), containsString("Rectangle: Area = 168, Perimeter = 52"));
+		assertThat(output(), containsString("Square: Area = 100.00, Perimeter = 40.00"));
+		assertThat(output(), containsString("Rectangle: Area = 168.00, Perimeter = 52.00"));
+	}
+	
+	@Test
+	public void executeSaga01() throws Exception {
+		Scanner input = buildInput("2", "1", "10", "2", "3", "10", "1", "0");
+		GeometryApp app = new GeometryApp(input, writer);
+		app.run();
+		assertThat(output(), containsString("Square: Area = 100.00, Perimeter = 40.00"));
+		assertThat(output(), containsString("Circle: Area = 314.16, Perimeter = 62.83"));
 	}
 }

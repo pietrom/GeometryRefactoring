@@ -27,7 +27,7 @@ public class GeometryAppTest extends EndToEndTest {
 
 	@Test(timeout = 200)
 	public void shouldPrintNewPolygonMenuAndExit() throws Exception {
-		Scanner input = buildInput("2", "0");
+		Scanner input = buildInput("2", "0", "0");
 		GeometryApp app = new GeometryApp(input, writer);
 		app.run();
 		assertThat(output(), containsString("Add new Polygon:"));

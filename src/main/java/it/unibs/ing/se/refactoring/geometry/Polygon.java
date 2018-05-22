@@ -1,6 +1,7 @@
 package it.unibs.ing.se.refactoring.geometry;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Polygon {
 	private final String type;
@@ -15,7 +16,7 @@ public class Polygon {
 	
 	@Override
 	public String toString() {
-		return String.format("%s: Area = %s, Perimeter = %s", type, area().toString(), perimeter().toString());
+		return String.format("%s: Area = %s, Perimeter = %s", type, area().setScale(2, RoundingMode.HALF_UP).toString(), perimeter().setScale(2, RoundingMode.HALF_UP).toString());
 	}
 
 	public BigDecimal area() {

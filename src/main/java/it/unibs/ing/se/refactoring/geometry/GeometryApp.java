@@ -54,6 +54,11 @@ public class GeometryApp {
 						int height = readInt();
 						polygons.add(new Polygon("Rectangle", BigDecimal.valueOf(width * height), BigDecimal.valueOf(2 * (width + height))));
 						break;
+					case 3:
+						println("Circle: ");
+						int radius = readInt();
+						polygons.add(new Polygon("Circle", BigDecimal.valueOf(radius * radius * Math.PI), BigDecimal.valueOf(2 * radius * Math.PI)));
+						break;
 				}
 				break;
 			}
