@@ -73,11 +73,10 @@ public class GeometryApp {
 //			case 4:
 //				println("Polygon list (with details):");
 //				for (Polygon polygon : polygons) {
-//					println(polygon.toString());
+//					//... ... ...
 //				}
 //				break;
 			}
-			go = choice != 0;
 		}
 	}
 
