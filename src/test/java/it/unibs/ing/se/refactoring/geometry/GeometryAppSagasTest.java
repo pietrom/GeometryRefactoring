@@ -33,4 +33,13 @@ public class GeometryAppSagasTest extends EndToEndTest {
 		app.run();
 		assertThat(output(), containsString("The Polygon having max(Area) is Square: Area = 100.00, Perimeter = 40.00"));
 	}
+	
+//	@Test
+//	public void executeSaga03() throws Exception {
+//		Scanner input = buildInput("2", "1", "10", "2", "2", "12", "14", "4", "0");
+//		GeometryApp app = new GeometryApp(input, writer);
+//		app.run();
+//		assertThat(output(), containsString("Square(10): Area = 100.00, Perimeter = 40.00"));
+//		assertThat(output(), containsString("Rectangle(12x14): Area = 168.00, Perimeter = 52.00"));
+//	}
 }

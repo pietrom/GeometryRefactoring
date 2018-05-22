@@ -26,6 +26,7 @@ public class GeometryApp {
 			println("1) Polygon list");
 			println("2) New polygon");
 			println("3) Find polygon having max(Area)");
+			println("3) Detailed list");
 			int choice = readInt();
 			switch (choice) {
 			case 0:
@@ -68,6 +69,13 @@ public class GeometryApp {
 				if(pOpt.isPresent()) {
 					println(String.format("The Polygon having max(Area) is %s", pOpt.get().toString()));
 				}
+				break;
+//			case 4:
+//				println("Polygon list (with details):");
+//				for (Polygon polygon : polygons) {
+//					println(polygon.toString());
+//				}
+//				break;
 			}
 			go = choice != 0;
 		}
