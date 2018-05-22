@@ -9,18 +9,22 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
 
 public class GeometryAppTest {
+	private static Scanner buildInput(String... commands) {
+		Scanner input = new Scanner(String.join("\n", commands));
+		input.useDelimiter("\n");
+		return input;
+	}
+
 	@Test(timeout = 200)
 	public void shouldExit() throws Exception {
-		Scanner input = new Scanner("0\n");
-		input.useDelimiter("\n");
+		Scanner input = buildInput("0");
 		GeometryApp app = new GeometryApp(input, new PrintWriter(new ByteArrayOutputStream()));
 		app.run();
 	}
-	
+
 	@Test(timeout = 200)
 	public void shouldPrintPolygonListAndExit() throws Exception {
-		Scanner input = new Scanner("1\n0\n");
-		input.useDelimiter("\n");
+		Scanner input = buildInput("1", "0");
 		ByteArrayOutputStream output = new ByteArrayOutputStream();
 		GeometryApp app = new GeometryApp(input, new PrintWriter(output));
 		app.run();
