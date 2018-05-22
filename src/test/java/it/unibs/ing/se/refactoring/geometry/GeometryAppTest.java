@@ -8,13 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
 
-public class GeometryAppTest {
-	private static Scanner buildInput(String... commands) {
-		Scanner input = new Scanner(String.join("\n", commands));
-		input.useDelimiter("\n");
-		return input;
-	}
-
+public class GeometryAppTest extends EndToEndTest {
 	@Test(timeout = 200)
 	public void shouldExit() throws Exception {
 		Scanner input = buildInput("0");
@@ -25,20 +19,16 @@ public class GeometryAppTest {
 	@Test(timeout = 200)
 	public void shouldPrintPolygonListAndExit() throws Exception {
 		Scanner input = buildInput("1", "0");
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		GeometryApp app = new GeometryApp(input, new PrintWriter(output));
+		GeometryApp app = new GeometryApp(input, writer);
 		app.run();
-		String outText = output.toString();
-		assertThat(outText, containsString("Polygon list:"));
+		assertThat(output(), containsString("Polygon list:"));
 	}
-	
+
 	@Test(timeout = 200)
 	public void shouldPrintNewPolygonMenuAndExit() throws Exception {
 		Scanner input = buildInput("2", "0");
-		ByteArrayOutputStream output = new ByteArrayOutputStream();
-		GeometryApp app = new GeometryApp(input, new PrintWriter(output));
+		GeometryApp app = new GeometryApp(input, writer);
 		app.run();
-		String outText = output.toString();
-		assertThat(outText, containsString("Add new Polygon:"));
+		assertThat(output(), containsString("Add new Polygon:"));
 	}
 }
