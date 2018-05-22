@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class GeometryApp {
@@ -24,6 +25,7 @@ public class GeometryApp {
 			println("0) Exit");
 			println("1) Polygon list");
 			println("2) New polygon");
+			println("3) Find polygon having max(Area)");
 			int choice = readInt();
 			switch (choice) {
 			case 0:
@@ -61,6 +63,11 @@ public class GeometryApp {
 						break;
 				}
 				break;
+			case 3:
+				Optional<Polygon> pOpt = polygons.stream().sorted((p1, p2) -> p1.area().subtract(p2.area()).intValue()).findFirst();
+				if(pOpt.isPresent()) {
+					println(String.format("The Polygon having max(Area) is %s", pOpt.get().toString()));
+				}
 			}
 			go = choice != 0;
 		}
