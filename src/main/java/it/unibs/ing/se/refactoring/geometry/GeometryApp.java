@@ -15,10 +15,10 @@ public class GeometryApp {
 	public void run() {
 		boolean go = true;
 		while (go) {
-			println("Scegli un'azione:");
-			println("0) Uscita");
-			println("1) Lista poligoni");
-			println("2) Aggiunta poligono");
+			println("Insert a command:");
+			println("0) Exit");
+			println("1) Polygon list");
+			println("2) New polygon");
 			int choice = readInt();
 			switch (choice) {
 			case 0:
@@ -26,6 +26,9 @@ public class GeometryApp {
 				break;
 			case 1:
 				println("Polygon list:");
+				break;
+			case 2:
+				println("Add new Polygon:");
 				break;
 			}
 			go = choice != 0;

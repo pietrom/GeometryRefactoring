@@ -31,4 +31,14 @@ public class GeometryAppTest {
 		String outText = output.toString();
 		assertThat(outText, containsString("Polygon list:"));
 	}
+	
+	@Test(timeout = 200)
+	public void shouldPrintNewPolygonMenuAndExit() throws Exception {
+		Scanner input = buildInput("2", "0");
+		ByteArrayOutputStream output = new ByteArrayOutputStream();
+		GeometryApp app = new GeometryApp(input, new PrintWriter(output));
+		app.run();
+		String outText = output.toString();
+		assertThat(outText, containsString("Add new Polygon:"));
+	}
 }
