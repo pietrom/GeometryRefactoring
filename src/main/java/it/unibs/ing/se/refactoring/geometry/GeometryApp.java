@@ -44,40 +44,59 @@ public class GeometryApp {
 				println("1) Square");
 				println("2) Rectangle");
 				int polygonChoice = readInt();
-				switch(polygonChoice) {
-					case 1:
-						println("Side length: ");
-						int side = readInt();
-						polygons.add(new Polygon("Square", BigDecimal.valueOf(side * side), BigDecimal.valueOf(4 * side)));
-						break;
-					case 2:
-						println("Width: ");
-						int width = readInt();
-						println("Length: ");
-						int height = readInt();
-						polygons.add(new Polygon("Rectangle", BigDecimal.valueOf(width * height), BigDecimal.valueOf(2 * (width + height))));
-						break;
-					case 3:
-						println("Circle: ");
-						int radius = readInt();
-						polygons.add(new Polygon("Circle", BigDecimal.valueOf(radius * radius * Math.PI), BigDecimal.valueOf(2 * radius * Math.PI)));
-						break;
+				switch (polygonChoice) {
+				case 1:
+					Shape square = createSquare();
+					polygons.add(square);
+					break;
+				case 2:
+					Shape rect = createRectangle();
+					polygons.add(rect);
+					break;
+				case 3:
+					Shape circle = createCircle();
+					polygons.add(circle);
+					break;
 				}
 				break;
 			case 3:
-				Optional<Shape> pOpt = polygons.stream().sorted((p1, p2) -> p1.area().subtract(p2.area()).intValue()).findFirst();
-				if(pOpt.isPresent()) {
+				Optional<Shape> pOpt = polygons.stream().sorted((p1, p2) -> p1.area().subtract(p2.area()).intValue())
+						.findFirst();
+				if (pOpt.isPresent()) {
 					println(String.format("The Polygon having max(Area) is %s", pOpt.get().toString()));
 				}
 				break;
-//			case 4:
-//				println("Polygon list (with details):");
-//				for (Polygon polygon : polygons) {
-//					//... ... ...
-//				}
-//				break;
+			// case 4:
+			// println("Polygon list (with details):");
+			// for (Polygon polygon : polygons) {
+			// //... ... ...
+			// }
+			// break;
 			}
 		}
+	}
+
+	private Shape createCircle() {
+		println("Circle: ");
+		int radius = readInt();
+		Shape circle = new Polygon("Circle", BigDecimal.valueOf(radius * radius * Math.PI), BigDecimal.valueOf(2 * radius * Math.PI));
+		return circle;
+	}
+
+	private Shape createSquare() {
+		println("Side length: ");
+		int side = readInt();
+		Shape square = new Polygon("Square", BigDecimal.valueOf(side * side), BigDecimal.valueOf(4 * side));
+		return square;
+	}
+
+	private Shape createRectangle() {
+		println("Width: ");
+		int width = readInt();
+		println("Length: ");
+		int height = readInt();
+		Shape shape = new Polygon("Rectangle", BigDecimal.valueOf(width * height), BigDecimal.valueOf(2 * (width + height)));
+		return shape;
 	}
 
 	private void println(String msg) {
