@@ -44,19 +44,20 @@ public class GeometryApp {
 				println("1) Square");
 				println("2) Rectangle");
 				int polygonChoice = readInt();
+				Shape shape = null;
 				switch (polygonChoice) {
 				case 1:
-					Shape square = createSquare();
-					polygons.add(square);
+					shape = createSquare();
 					break;
 				case 2:
-					Shape rect = createRectangle();
-					polygons.add(rect);
+					shape = createRectangle();
 					break;
 				case 3:
-					Shape circle = createCircle();
-					polygons.add(circle);
+					shape = createCircle();
 					break;
+				}
+				if(shape != null) {
+					polygons.add(shape);
 				}
 				break;
 			case 3:
