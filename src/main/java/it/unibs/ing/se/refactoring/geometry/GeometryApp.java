@@ -39,7 +39,7 @@ public class GeometryApp {
 			case 1:
 				println("Polygon list:");
 				for (Shape polygon : polygons) {
-					println(polygon.toString());
+					println(Shape.stats(polygon));
 				}
 				break;
 			case 2:
@@ -68,7 +68,7 @@ public class GeometryApp {
 				Optional<Shape> pOpt = polygons.stream().sorted((p1, p2) -> p1.area().subtract(p2.area()).intValue())
 						.findFirst();
 				if (pOpt.isPresent()) {
-					println(String.format("The Polygon having max(Area) is %s", pOpt.get().toString()));
+					println(String.format("The Polygon having max(Area) is %s", Shape.stats(pOpt.get())));
 				}
 				break;
 			case 4:

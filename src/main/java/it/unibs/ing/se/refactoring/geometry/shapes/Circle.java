@@ -23,12 +23,6 @@ public class Circle implements Shape {
 	}
 
 	@Override
-	public String toString() {
-		return String.format("Circle: Area = %s, Perimeter = %s", area().setScale(2, RoundingMode.HALF_UP).toString(),
-				perimeter().setScale(2, RoundingMode.HALF_UP).toString());
-	}
-
-	@Override
 	public String toStringWithDetails() {
 		return String.format("Circle(%s): Area = %s, Perimeter = %s", radius.setScale(2, RoundingMode.HALF_UP).toString(),area().setScale(2, RoundingMode.HALF_UP).toString(),
 				perimeter().setScale(2, RoundingMode.HALF_UP).toString());
