@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import it.unibs.ing.se.refactoring.geometry.shapes.Rectangle;
+
 public class GeometryApp {
 	private final Scanner input;
 	private final PrintWriter output;
@@ -96,7 +98,7 @@ public class GeometryApp {
 		int width = readInt();
 		println("Length: ");
 		int height = readInt();
-		Shape shape = new Polygon("Rectangle", BigDecimal.valueOf(width * height), BigDecimal.valueOf(2 * (width + height)));
+		Shape shape = new Rectangle(BigDecimal.valueOf(width), BigDecimal.valueOf(height));
 		return shape;
 	}
 
