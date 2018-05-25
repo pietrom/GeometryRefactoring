@@ -28,4 +28,10 @@ public class Polygon implements Shape {
 	public BigDecimal perimeter() {
 		return perimeter;
 	}
+
+	@Override
+	public String toStringWithDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

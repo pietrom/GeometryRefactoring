@@ -60,7 +60,7 @@ public class GeometryApp {
 					shape = createCircle();
 					break;
 				}
-				if(shape != null) {
+				if (shape != null) {
 					polygons.add(shape);
 				}
 				break;
@@ -71,12 +71,12 @@ public class GeometryApp {
 					println(String.format("The Polygon having max(Area) is %s", pOpt.get().toString()));
 				}
 				break;
-			// case 4:
-			// println("Polygon list (with details):");
-			// for (Polygon polygon : polygons) {
-			// //... ... ...
-			// }
-			// break;
+			case 4:
+				println("Polygon list (with details):");
+				for (Shape s : polygons) {
+					println(s.toStringWithDetails());
+				}
+				break;
 			}
 		}
 	}

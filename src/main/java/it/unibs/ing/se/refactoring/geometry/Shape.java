@@ -10,4 +10,5 @@ public interface Shape {
 
 	BigDecimal perimeter();
 
+	String toStringWithDetails();
 }
