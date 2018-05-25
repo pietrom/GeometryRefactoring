@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 import it.unibs.ing.se.refactoring.geometry.shapes.Circle;
 import it.unibs.ing.se.refactoring.geometry.shapes.Rectangle;
+import it.unibs.ing.se.refactoring.geometry.shapes.Square;
 
 public class GeometryApp {
 	private final Scanner input;
@@ -90,7 +91,7 @@ public class GeometryApp {
 	private Shape createSquare() {
 		println("Side length: ");
 		int side = readInt();
-		Shape square = new Polygon("Square", BigDecimal.valueOf(side * side), BigDecimal.valueOf(4 * side));
+		Shape square = new Square(BigDecimal.valueOf(side));
 		return square;
 	}
 
