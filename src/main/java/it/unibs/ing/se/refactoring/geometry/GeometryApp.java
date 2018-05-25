@@ -10,12 +10,12 @@ import java.util.Scanner;
 public class GeometryApp {
 	private final Scanner input;
 	private final PrintWriter output;
-	private final List<Polygon> polygons;
+	private final List<Shape> polygons;
 
 	public GeometryApp(Scanner input, PrintWriter output) {
 		this.input = input;
 		this.output = output;
-		this.polygons = new ArrayList<Polygon>();
+		this.polygons = new ArrayList<Shape>();
 	}
 
 	public void run() {
@@ -34,7 +34,7 @@ public class GeometryApp {
 				break;
 			case 1:
 				println("Polygon list:");
-				for (Polygon polygon : polygons) {
+				for (Shape polygon : polygons) {
 					println(polygon.toString());
 				}
 				break;
@@ -65,7 +65,7 @@ public class GeometryApp {
 				}
 				break;
 			case 3:
-				Optional<Polygon> pOpt = polygons.stream().sorted((p1, p2) -> p1.area().subtract(p2.area()).intValue()).findFirst();
+				Optional<Shape> pOpt = polygons.stream().sorted((p1, p2) -> p1.area().subtract(p2.area()).intValue()).findFirst();
 				if(pOpt.isPresent()) {
 					println(String.format("The Polygon having max(Area) is %s", pOpt.get().toString()));
 				}
