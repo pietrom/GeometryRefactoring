@@ -14,42 +14,40 @@ import it.unibs.ing.se.refactoring.geometry.shapes.Square;
 import static it.unibs.ing.se.refactoring.geometry.ShapeFormatterHelper.*;
 
 public class GeometryApp {
-	private final Scanner input;
-	private final PrintWriter output;
-	private final List<Shape> polygons;
+	private final InputOutputManager io;
+		private final List<Shape> polygons;
 
 	public GeometryApp(Scanner input, PrintWriter output) {
-		this.input = input;
-		this.output = output;
+		this.io = new InputOutputManager(input, output);
 		this.polygons = new ArrayList<Shape>();
 	}
 
 	public void run() {
 		boolean go = true;
 		while (go) {
-			println("Insert a command:");
-			println("0) Exit");
-			println("1) Polygon list");
-			println("2) New polygon");
-			println("3) Find polygon having max(Area)");
-			println("3) Detailed list");
-			int choice = readInt();
+			io.println("Insert a command:");
+			io.println("0) Exit");
+			io.println("1) Polygon list");
+			io.println("2) New polygon");
+			io.println("3) Find polygon having max(Area)");
+			io.println("3) Detailed list");
+			int choice = io.readInt();
 			switch (choice) {
 			case 0:
 				go = false;
 				break;
 			case 1:
-				println("Polygon list:");
+				io.println("Polygon list:");
 				for (Shape polygon : polygons) {
-					println(stats(polygon));
+					io.println(stats(polygon));
 				}
 				break;
 			case 2:
-				println("Add new Polygon:");
-				println("0) Exit");
-				println("1) Square");
-				println("2) Rectangle");
-				int polygonChoice = readInt();
+				io.println("Add new Polygon:");
+				io.println("0) Exit");
+				io.println("1) Square");
+				io.println("2) Rectangle");
+				int polygonChoice = io.readInt();
 				Shape shape = null;
 				switch (polygonChoice) {
 				case 1:
@@ -70,13 +68,13 @@ public class GeometryApp {
 				Optional<Shape> pOpt = polygons.stream().sorted((p1, p2) -> p1.area().subtract(p2.area()).intValue())
 						.findFirst();
 				if (pOpt.isPresent()) {
-					println(String.format("The Polygon having max(Area) is %s", stats(pOpt.get())));
+					io.println(String.format("The Polygon having max(Area) is %s", stats(pOpt.get())));
 				}
 				break;
 			case 4:
-				println("Polygon list (with details):");
+				io.println("Polygon list (with details):");
 				for (Shape s : polygons) {
-					println(detailedStats(s));
+					io.println(detailedStats(s));
 				}
 				break;
 			}
@@ -84,32 +82,22 @@ public class GeometryApp {
 	}
 
 	private Shape createCircle() {
-		println("Circle: ");
-		int radius = readInt();
+		io.println("Circle: ");
+		int radius = io.readInt();
 		return new Circle(BigDecimal.valueOf(radius));
 	}
 
 	private Shape createSquare() {
-		println("Side length: ");
-		int side = readInt();
+		io.println("Side length: ");
+		int side = io.readInt();
 		return new Square(BigDecimal.valueOf(side));
 	}
 
 	private Shape createRectangle() {
-		println("Width: ");
-		int width = readInt();
-		println("Length: ");
-		int height = readInt();
+		io.println("Width: ");
+		int width = io.readInt();
+		io.println("Length: ");
+		int height = io.readInt();
 		return new Rectangle(BigDecimal.valueOf(width), BigDecimal.valueOf(height));
-	}
-
-	private void println(String msg) {
-		output.println(msg);
-		output.flush();
-	}
-
-	private int readInt() {
-		String s = input.next();
-		return Integer.parseInt(s);
-	}
+	}	
 }
