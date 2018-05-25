@@ -84,15 +84,13 @@ public class GeometryApp {
 	private Shape createCircle() {
 		println("Circle: ");
 		int radius = readInt();
-		Shape circle = new Circle(BigDecimal.valueOf(radius));
-		return circle;
+		return new Circle(BigDecimal.valueOf(radius));
 	}
 
 	private Shape createSquare() {
 		println("Side length: ");
 		int side = readInt();
-		Shape square = new Square(BigDecimal.valueOf(side));
-		return square;
+		return new Square(BigDecimal.valueOf(side));
 	}
 
 	private Shape createRectangle() {
@@ -100,8 +98,7 @@ public class GeometryApp {
 		int width = readInt();
 		println("Length: ");
 		int height = readInt();
-		Shape shape = new Rectangle(BigDecimal.valueOf(width), BigDecimal.valueOf(height));
-		return shape;
+		return new Rectangle(BigDecimal.valueOf(width), BigDecimal.valueOf(height));
 	}
 
 	private void println(String msg) {
