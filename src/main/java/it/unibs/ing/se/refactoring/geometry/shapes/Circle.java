@@ -23,8 +23,7 @@ public class Circle implements Shape {
 	}
 
 	@Override
-	public String toStringWithDetails() {
-		return String.format("Circle(%s): Area = %s, Perimeter = %s", radius.setScale(2, RoundingMode.HALF_UP).toString(),area().setScale(2, RoundingMode.HALF_UP).toString(),
-				perimeter().setScale(2, RoundingMode.HALF_UP).toString());
+	public String details() {
+		return radius.setScale(2, RoundingMode.HALF_UP).toString();
 	}
 }

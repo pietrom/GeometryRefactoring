@@ -74,7 +74,7 @@ public class GeometryApp {
 			case 4:
 				println("Polygon list (with details):");
 				for (Shape s : polygons) {
-					println(s.toStringWithDetails());
+					println(Shape.detailedStats(s));
 				}
 				break;
 			}

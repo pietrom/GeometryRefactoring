@@ -22,10 +22,10 @@ public class Rectangle implements Shape {
 	public BigDecimal perimeter() {
 		return BigDecimal.valueOf(2).multiply(width.add(height));
 	}
-	
+
 	@Override
-	public String toStringWithDetails() {
-		return String.format("Rectangle(%sx%s): Area = %s, Perimeter = %s", width.setScale(2, RoundingMode.HALF_UP).toString(), height.setScale(2, RoundingMode.HALF_UP).toString(),area().setScale(2, RoundingMode.HALF_UP).toString(),
-				perimeter().setScale(2, RoundingMode.HALF_UP).toString());
+	public String details() {
+		return String.format("%sx%s", width.setScale(2, RoundingMode.HALF_UP).toString(),
+				height.setScale(2, RoundingMode.HALF_UP).toString());
 	}
 }

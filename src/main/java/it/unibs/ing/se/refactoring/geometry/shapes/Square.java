@@ -23,8 +23,7 @@ public class Square implements Shape {
 	}
 	
 	@Override
-	public String toStringWithDetails() {
-		return String.format("Square(%s): Area = %s, Perimeter = %s", side.setScale(2, RoundingMode.HALF_UP).toString(),area().setScale(2, RoundingMode.HALF_UP).toString(),
-				perimeter().setScale(2, RoundingMode.HALF_UP).toString());
+	public String details() {
+		return side.setScale(2, RoundingMode.HALF_UP).toString();
 	}
 }
