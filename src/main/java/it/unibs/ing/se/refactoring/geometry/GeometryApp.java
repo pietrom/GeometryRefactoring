@@ -1,25 +1,24 @@
 package it.unibs.ing.se.refactoring.geometry;
 
+import static it.unibs.ing.se.refactoring.geometry.ShapeFormatterHelper.detailedStats;
+import static it.unibs.ing.se.refactoring.geometry.ShapeFormatterHelper.stats;
+
 import java.io.PrintWriter;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
-import it.unibs.ing.se.refactoring.geometry.shapes.Circle;
-import it.unibs.ing.se.refactoring.geometry.shapes.Rectangle;
-import it.unibs.ing.se.refactoring.geometry.shapes.Square;
-
-import static it.unibs.ing.se.refactoring.geometry.ShapeFormatterHelper.*;
-
 public class GeometryApp {
 	private final InputOutputManager io;
-		private final List<Shape> polygons;
+	private final List<ShapeBuilder> shapeBuilders;
+	private final List<Shape> polygons;
 
-	public GeometryApp(Scanner input, PrintWriter output) {
+	public GeometryApp(Scanner input, PrintWriter output, List<ShapeBuilder> shapeBuilders) {
 		this.io = new InputOutputManager(input, output);
+		this.shapeBuilders = shapeBuilders;
 		this.polygons = new ArrayList<Shape>();
+
 	}
 
 	public void run() {
@@ -45,24 +44,16 @@ public class GeometryApp {
 			case 2:
 				io.println("Add new Polygon:");
 				io.println("0) Exit");
-				io.println("1) Square");
-				io.println("2) Rectangle");
+				for (int i = 0; i < shapeBuilders.size(); i++) {
+					io.println(String.format("%d) %s", (i + 1), shapeBuilders.get(i).description()));
+				}
 				int polygonChoice = io.readInt();
-				Shape shape = null;
-				switch (polygonChoice) {
-				case 1:
-					shape = createSquare();
-					break;
-				case 2:
-					shape = createRectangle();
-					break;
-				case 3:
-					shape = createCircle();
-					break;
-				}
-				if (shape != null) {
-					polygons.add(shape);
-				}
+				if(polygonChoice > 0 && polygonChoice <= shapeBuilders.size()) {
+					Shape shape = shapeBuilders.get(polygonChoice - 1).buildFromUserInput(io);
+					if (shape != null) {
+						polygons.add(shape);
+					}					
+				}				
 				break;
 			case 3:
 				Optional<Shape> pOpt = polygons.stream().sorted((p1, p2) -> p1.area().subtract(p2.area()).intValue())
@@ -80,24 +71,4 @@ public class GeometryApp {
 			}
 		}
 	}
-
-	private Shape createCircle() {
-		io.println("Circle: ");
-		int radius = io.readInt();
-		return new Circle(BigDecimal.valueOf(radius));
-	}
-
-	private Shape createSquare() {
-		io.println("Side length: ");
-		int side = io.readInt();
-		return new Square(BigDecimal.valueOf(side));
-	}
-
-	private Shape createRectangle() {
-		io.println("Width: ");
-		int width = io.readInt();
-		io.println("Length: ");
-		int height = io.readInt();
-		return new Rectangle(BigDecimal.valueOf(width), BigDecimal.valueOf(height));
-	}	
 }

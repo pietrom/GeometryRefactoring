@@ -8,7 +8,7 @@ public class Main {
 		Scanner input = new Scanner(System.in);
 		input.useDelimiter(System.getProperty("line.separator"));
 		PrintWriter output = new PrintWriter(System.out);
-		GeometryApp app = new GeometryApp(input, output);
+		GeometryApp app = new GeometryApp(input, output, ShapeBuilderRegistry.shapeBuilders());
 		app.run();
 	}
 }
