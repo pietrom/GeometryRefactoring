@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
+import it.unibs.ing.se.refactoring.geometry.shapes.Circle;
 import it.unibs.ing.se.refactoring.geometry.shapes.Rectangle;
 
 public class GeometryApp {
@@ -82,7 +83,7 @@ public class GeometryApp {
 	private Shape createCircle() {
 		println("Circle: ");
 		int radius = readInt();
-		Shape circle = new Polygon("Circle", BigDecimal.valueOf(radius * radius * Math.PI), BigDecimal.valueOf(2 * radius * Math.PI));
+		Shape circle = new Circle(BigDecimal.valueOf(radius));
 		return circle;
 	}
 
