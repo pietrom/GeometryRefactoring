@@ -11,6 +11,8 @@ import it.unibs.ing.se.refactoring.geometry.shapes.Circle;
 import it.unibs.ing.se.refactoring.geometry.shapes.Rectangle;
 import it.unibs.ing.se.refactoring.geometry.shapes.Square;
 
+import static it.unibs.ing.se.refactoring.geometry.ShapeFormatterHelper.*;
+
 public class GeometryApp {
 	private final Scanner input;
 	private final PrintWriter output;
@@ -39,7 +41,7 @@ public class GeometryApp {
 			case 1:
 				println("Polygon list:");
 				for (Shape polygon : polygons) {
-					println(Shape.stats(polygon));
+					println(stats(polygon));
 				}
 				break;
 			case 2:
@@ -68,13 +70,13 @@ public class GeometryApp {
 				Optional<Shape> pOpt = polygons.stream().sorted((p1, p2) -> p1.area().subtract(p2.area()).intValue())
 						.findFirst();
 				if (pOpt.isPresent()) {
-					println(String.format("The Polygon having max(Area) is %s", Shape.stats(pOpt.get())));
+					println(String.format("The Polygon having max(Area) is %s", stats(pOpt.get())));
 				}
 				break;
 			case 4:
 				println("Polygon list (with details):");
 				for (Shape s : polygons) {
-					println(Shape.detailedStats(s));
+					println(detailedStats(s));
 				}
 				break;
 			}
